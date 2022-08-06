@@ -21,13 +21,15 @@ class subTitleAppBar extends StatelessWidget {
         if(snapshot.data?.docs[0]["userStatus"]!=null){
             if(snapshot.data?.docs[0]["userStatus"] == "Online") {
               userStatus = snapshot.data?.docs[0]["userStatus"];
-            }else{
+            }else if(snapshot.data?.docs[0]["userStatus"] == "typing....") {
+              userStatus = snapshot.data?.docs[0]["userStatus"];
+            }else {
 
               userStatus = "last seen : ${Jiffy(
                   DateFormat('dd-MM-yyyy hh:mm a').format(DateTime
                       .parse(snapshot.data!.docs[0]["userStatus"]
                       .toDate()
-                      .toString()
+                      .toString() 
                   ))
               , "dd-MM-yyyy hh:mm a").fromNow()}";
             }
